@@ -69,26 +69,30 @@ namespace dual_num {
         }
 
         // Add another dual number to *this
-        template<typename U>
-        constexpr DualNumber<T>& operator+=(const DualNumber<U>& other) {
+        constexpr DualNumber<T>& operator+=(const DualNumber<T>& other) {
             _real += other.real();
             _dual += other.dual();
             return *this;
         }
 
         // Subtract another dual number from *this
-        template<typename U>
-        constexpr DualNumber<T>& operator-=(const DualNumber<U>& other) {
+        constexpr DualNumber<T>& operator-=(const DualNumber<T>& other) {
             _real -= other.real();
             _dual -= other.dual();
             return *this;
         }
 
         // Multiply *this by another dual number
-        template<typename U>
-        constexpr DualNumber<T>& operator*=(const DualNumber<U>& other) {
+        constexpr DualNumber<T>& operator*=(const DualNumber<T>& other) {
             _dual = _real * other.dual() + _dual * other.real();
             _real = _real * other.real();
+            return *this;
+        }
+
+        // Divide *this by another dual number
+        constexpr DualNumber<T>& operator/=(const DualNumber<T>& other) {
+            _dual = ( - _real * other.dual() + _dual * other.real() ) / ( other.real() * other.real() );
+            _real /= other.real();
             return *this;
         }
 
