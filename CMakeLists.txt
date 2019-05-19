@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.1)
+project(dual_num)
 
-set(PROJECT_NAME dual_num)
+set(CMAKE_CXX_STANDARD_REQUIRED 14)
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Wno-long-long -pedantic")
 
 # set path to external dependencies
 set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/external)
